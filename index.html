@@ -23,6 +23,7 @@
             padding: 20px 40px;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
 
         h1 {
@@ -53,17 +54,33 @@
         button:hover {
             transform: scale(1.1);
         }
+
+        .message {
+            font-size: 1.5em;
+            color: #ff7eb3;
+            margin-top: 20px;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.5s;
+        }
+
+        .message.visible {
+            visibility: visible;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Do you love Seeyam? ❤️</h1>
+        <h1>Do you love me? ❤️</h1>
         <button class="yes">Yes</button>
-        <button class="no" onclick="sayThanks()">No</button>
+        <button class="no" onclick="sayHaha()">No</button>
+        <div class="message" id="message"></div>
     </div>
 
     <script>
         const yesButton = document.querySelector('.yes');
+        const messageDiv = document.getElementById('message');
 
         yesButton.addEventListener('mouseover', () => {
             const randomX = Math.random() * (window.innerWidth - 100);
@@ -73,8 +90,9 @@
             yesButton.style.top = `${randomY}px`;
         });
 
-        function sayThanks() {
-            alert("Okay, thank you 😢");
+        function sayHaha() {
+            messageDiv.textContent = "Haha! This is the YES button! 😂";
+            messageDiv.classList.add('visible');
         }
     </script>
 </body>
